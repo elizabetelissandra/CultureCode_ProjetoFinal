@@ -2,6 +2,8 @@ import { ConfigService } from "@nestjs/config";
 import { TypeOrmModuleAsyncOptions, TypeOrmModuleOptions } from "@nestjs/typeorm";
 import { PostgresConnectionOptions } from "typeorm/driver/postgres/PostgresConnectionOptions";
 
+import * as entities from '../database/entities/index' 
+
 export default <TypeOrmModuleAsyncOptions>{
     inject: [ConfigService],
 
@@ -14,7 +16,8 @@ export default <TypeOrmModuleAsyncOptions>{
             port: configService.get('DB_PORT'),
             username: configService.get('DB_USERNAME'),
             password: configService.get('DB_PASSWORD'),
-            entities: [],
+            database: configService.get('DB_NAME'),
+            entities: Object.values(entities),
             synchronize: true,
         }
     }
