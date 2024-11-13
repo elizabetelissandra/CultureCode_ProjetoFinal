@@ -5,6 +5,7 @@ import { BeforeInsert, Column, CreateDateColumn, DeleteDateColumn, Entity, OneTo
 import { TransactionEnum } from "src/enum/transaction.enum"
 import { BadGatewayException } from "@nestjs/common"
 import * as bcrypt from 'bcrypt'
+import { Jewels } from "./jewels.entity"
 
 @Entity()
 export class User {
@@ -31,8 +32,11 @@ export class User {
     
     @Column({type: 'int', default: 0})
     coins: number
+
+    @OneToMany(()=> Jewels, (jewels) => jewels.user)
+    jewels: Jewels[]
     
-    @OneToMany(() => Product, (product) => product.comprador)
+    @OneToMany(() => Product, (product) => product.buyer)
     productsPurchased: Product[]
 
     @CreateDateColumn()

@@ -20,7 +20,7 @@ export class Product{
     inStock: boolean
     
     @ManyToOne(() => User, (user) => user.productsPurchased, {onDelete: 'CASCADE'})
-    comprador: User
+    buyer: User
 
     @CreateDateColumn()
     createdAt: Date
