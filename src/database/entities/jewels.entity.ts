@@ -22,7 +22,7 @@ export class Jewels{
     @Column()
     active: boolean
 
-    @ManyToOne(() => User, (user) => user.coins, {onDelete: 'CASCADE'})
+    @ManyToOne(() => User, {onDelete: 'CASCADE'})
     userTransaction: User
 
     createdAt: Date
