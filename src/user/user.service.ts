@@ -59,7 +59,7 @@ async userById(id: number){
 
 async profile(user: UserDecoratorDTO){
     try {
-        return await this.usersRepository.findOne({where: {id: user.userId}, relations:     {coins: true, productsPurchased: true}
+        return await this.usersRepository.findOne({where: {id: user.userId}, relations: {productsPurchased: true}
         })
     } catch (error) {
         console.error(error)
