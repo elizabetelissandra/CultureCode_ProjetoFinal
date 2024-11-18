@@ -1,6 +1,6 @@
 import { CategoryEnum } from "src/enum/category.enum"
 import { User } from "./users.entity"
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, ManyToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
 
 @Entity()
 export class Product{
@@ -19,8 +19,8 @@ export class Product{
     @Column({type: 'bool', default: true})
     inStock: boolean
     
-    @ManyToOne(() => User, (user) => user.productsPurchased, {onDelete: 'CASCADE'})
-    buyer: User
+    @ManyToMany(() => User, (user) => user.productsPurchased, {onDelete: 'CASCADE'})
+    buyer: User[]
 
     @CreateDateColumn()
     createdAt: Date

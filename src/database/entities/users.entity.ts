@@ -1,6 +1,6 @@
 import { RoleEnum } from "src/enum/role.enum"
 import { Product } from "./products.entity"
-import { BeforeInsert, Column, CreateDateColumn, DeleteDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
+import { BeforeInsert, Column, CreateDateColumn, DeleteDateColumn, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
 
 import { TransactionEnum } from "src/enum/transaction.enum"
 import { BadGatewayException } from "@nestjs/common"
@@ -28,7 +28,7 @@ export class User {
     role?: RoleEnum
     
     @Column({type: "bool", default: true})
-    emailVerificado: boolean
+    emailVerified: boolean
     
     @Column({type: 'int', default: 0})
     coins: number
@@ -36,7 +36,8 @@ export class User {
     @OneToMany(()=> Jewels, (jewels) => jewels.user)
     jewels: Jewels[]
     
-    @OneToMany(() => Product, (product) => product.buyer)
+    @ManyToMany(() => Product, (product) => product.buyer)
+    @JoinTable()
     productsPurchased: Product[]
 
     @CreateDateColumn()

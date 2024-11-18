@@ -40,26 +40,41 @@ export class JewelsService {
     try {
       const user = await this.usersRepository.findOne({
         where: { id: userId },
-        select: {id: true, coins: true},relations: {jewels: true}
+        select: { id: true, firstName: true, role: true, email: true, coins: true },
+        relations: { jewels: true },
       });
-      
-      const jewel = await this.jewelsRepository.findOne({
-        where: { id: jewelId },select: {id: true, price: true, active: true, name: true, description: true, transactionType: true}, relations: {user: true}}
-      );
 
-      
+      const jewel = await this.jewelsRepository.findOne({
+        where: { id: jewelId },
+        select: {
+          id: true,
+          price: true,
+          active: true,
+          name: true,
+          description: true,
+          transactionType: true,
+        },
+      });
+
       if (!user || !jewel || !jewel.active) {
         throw new NotFoundException(
           'User or Jewel not found or jewel is inactive',
         );
       }
 
-      user.coins += jewel.price;
+      const userUpdate = [...user.jewels, jewel];
 
-      jewel.user = user;
+      await this.usersRepository.save({
+        ...user,
+        coins: user.coins + jewel.price,
+        jewels: userUpdate.map(j => ({ id: j.id })),
+      });
 
-      await this.usersRepository.save(user);
-      await this.jewelsRepository.save(jewel);
+      await this.jewelsRepository.save({
+        ...jewel,
+        active: false,
+        user: { id: user.id },
+      });
 
       return jewel;
     } catch (error) {

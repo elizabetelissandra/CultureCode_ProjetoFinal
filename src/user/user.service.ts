@@ -50,7 +50,7 @@ async userById(id: number){
     try {
         await this.findById(id)
 
-        return await this.usersRepository.findOne({where: {id}})
+        return await this.usersRepository.findOne({where: {id}, select: {id: true, firstName: true, lastName: true, coins: true}, relations: {jewels: true, productsPurchased: true}})
     } catch (error) {
         console.error(error)
         throw new HttpException(error.message, error.status)

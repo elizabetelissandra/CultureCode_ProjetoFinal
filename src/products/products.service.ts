@@ -17,7 +17,7 @@ export class ProductsService {
     @InjectRepository(Product)
     private productsRepository: Repository<Product>,
     @InjectRepository(User)
-    private usersRepository: Repository<User>
+    private usersRepository: Repository<User>,
   ) {}
 
   async create(body: CreateProdutsDto) {
@@ -37,28 +37,57 @@ export class ProductsService {
     }
   }
 
-  async reward(id: number, userDeco: UserDecoratorDTO){
+  async reward(id: number, userDeco: UserDecoratorDTO) {
     try {
-      const product = await this.productsRepository.findOne({where: {id}, select: {price: true, inStock: true, name: true, id: true}})
+      const product = await this.productsRepository.findOne({
+        where: { id },
+        select: {
+          id: true,
+          name: true,
+          price: true,
+          category: true,
+          inStock: true,
+        }, relations: {buyer: true}
+      });
 
-      const user = await this.usersRepository.findOne({where: {id: userDeco.userId}, select: {id: true, coins: true, productsPurchased: true}}) 
-
-      if(!product || !product.inStock){
-        throw new NotFoundException(`This product with id: ${id} not found or no stock`)
+      if (!product || !product.inStock) {
+        throw new NotFoundException(
+          `This product with id: ${id} not found or no stock`,
+        );
       }
 
-      if(user.coins < product.price){
-        throw new BadRequestException('Insufficient jewels')
+      const user = await this.usersRepository.findOne({
+        where: { id: userDeco.userId },
+        select: {
+          id: true,
+          coins: true,
+          firstName: true,
+          role: true,
+        },
+        relations: { productsPurchased: true },
+      });
+
+      if (user.coins < product.price) {
+        throw new BadRequestException('Insufficient jewels');
       }
 
-      user.coins -= product.price
-      product.buyer = user
-    
-      await this.usersRepository.save(user)
-      await this.productsRepository.save(product)
+      const updateProducts = [...user.productsPurchased, product];
 
-      return {message: 'Product purchased successfully', product}
+      await this.usersRepository.save({
+        ...user,
+        coins: user.coins - product.price,
+        productsPurchased: updateProducts.map((p) => ({ id: p.id })),
+      });
 
+      const userBuyer = [...product.buyer, user];
+
+      await this.productsRepository.save({
+        ...product,
+        inStock: true,
+        buyer: userBuyer.map((u) => ({ id: u.id })),
+      });
+
+      return { message: 'Product purchased successfully', user };
     } catch (error) {
       console.error(error);
       throw new HttpException(error.message, error.status);
@@ -93,9 +122,7 @@ export class ProductsService {
     try {
       await this.productById(id);
 
-      await this.productsRepository.update(id, body);
-
-      return await this.productById(id);
+      return await this.productsRepository.update(id, body);
     } catch (error) {
       console.error(error);
       throw new HttpException(error.message, error.status);
@@ -104,12 +131,11 @@ export class ProductsService {
 
   async delete(id: number) {
     try {
-        await this.productById(id)
+      await this.productById(id);
 
-        await this.productsRepository.delete(id)
+      await this.productsRepository.delete(id);
 
-        return {message: 'Product deleted'}
-        
+      return { message: 'Product deleted' };
     } catch (error) {
       console.error(error);
       throw new HttpException(error.message, error.status);
