@@ -5,13 +5,14 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User } from '../database/entities';
-import { Repository } from 'typeorm';
+import { Product, User } from '../database/entities';
+import { ILike, Repository } from 'typeorm';
 import { JwtService } from '@nestjs/jwt';
 import { RegisterDto } from './dtos/register.dto';
 import { UserService } from '../user/user.service';
 import { LoginDto } from './dtos/login.dto';
 import * as bcrypt from 'bcrypt';
+import { skip } from 'node:test';
 
 @Injectable()
 export class AuthService {
@@ -20,6 +21,8 @@ export class AuthService {
     private usersRepository: Repository<User>,
     private userService: UserService,
     private jwtService: JwtService,
+    @InjectRepository(Product)
+    private productsRepository: Repository<Product>,
   ) {}
 
   async register(body: RegisterDto) {
@@ -68,8 +71,50 @@ export class AuthService {
     try {
       return await this.usersRepository.findOne({
         where: { email },
-        select: {id: true, email: true, password: true, role: true },
+        select: { id: true, email: true, password: true, role: true },
       });
+    } catch (error) {
+      console.error(error);
+      throw new HttpException(error.message, error.status);
+    }
+  }
+
+  async findAllProducts(
+    page: number,
+    limit: number,
+    price?: number,
+    name?: string,
+  ) {
+    try {
+
+      if(!page || !limit){
+        throw new BadRequestException('required page and limit')
+      }
+      const pageOptions = { skip: (page - 1) * limit, take: limit };
+
+      const products = price
+        ? await this.productsRepository.find({
+            where: { price },
+            ...pageOptions,
+          })
+        : name
+          ? await this.productsRepository.find({
+              where: { name: ILike(`%${name}%`) },
+              ...pageOptions,
+            })
+          : price && name
+            ? await this.productsRepository.find({
+                where: { price, name },
+                ...pageOptions,
+              })
+            : await this.productsRepository.find({ ...pageOptions });
+
+      return {
+        page,
+        limit,
+        total: products.length,
+        data: products,
+      };
     } catch (error) {
       console.error(error);
       throw new HttpException(error.message, error.status);
