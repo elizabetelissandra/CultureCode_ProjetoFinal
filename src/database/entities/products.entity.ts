@@ -1,4 +1,4 @@
-import { CategoryEnum } from "src/enum/category.enum"
+import { CategoryEnum } from "../../enum/category.enum"
 import { User } from "./users.entity"
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, ManyToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
 

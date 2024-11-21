@@ -1,8 +1,6 @@
-import { RoleEnum } from "src/enum/role.enum"
+import { RoleEnum } from "../../enum/role.enum"
 import { Product } from "./products.entity"
 import { BeforeInsert, Column, CreateDateColumn, DeleteDateColumn, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
-
-import { TransactionEnum } from "src/enum/transaction.enum"
 import { BadGatewayException } from "@nestjs/common"
 import * as bcrypt from 'bcrypt'
 import { Jewels } from "./jewels.entity"
