@@ -1,12 +1,12 @@
 import { Body, Controller, Delete, Get, HttpCode, Param, ParseIntPipe, Patch, UseGuards } from '@nestjs/common';
 import { UserService } from './user.service';
 import { UpdateUserDto } from './dtos/updateUser.dto';
-import { UserDecorator } from 'src/auth/decorator/user.decorator';
+import { UserDecorator } from '../auth/decorator/user.decorator';
 import { UserDecoratorDTO } from './dtos/userDecorator.dto';
 import { AuthGuard } from '../auth/guards/auth.guard';
 import { RolesGuard } from '../auth/guards/role.guard';
-import { RoleEnum } from 'src/enum/role.enum';
-import { Roles } from 'src/auth/decorator/role.decorator';
+import { RoleEnum } from '../enum/role.enum';
+import { Roles } from '../auth/decorator/role.decorator';
 import { ApiAcceptedResponse, ApiBearerAuth, ApiBody, ApiForbiddenResponse, ApiOkResponse, ApiParam, ApiResponse, ApiTags, ApiUnauthorizedResponse } from '@nestjs/swagger';
 import { UserRelationsDoc } from './docs/user-relations.doc';
 import { ResponseUserDoc } from './docs/response-user.doc';
