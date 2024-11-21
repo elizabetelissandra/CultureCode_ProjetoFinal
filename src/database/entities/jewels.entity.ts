@@ -1,4 +1,4 @@
-import { TransactionEnum } from "src/enum/transaction.enum"
+import { TransactionEnum } from "../../enum/transaction.enum"
 import { User } from "./users.entity"
 import { Column, CreateDateColumn, Entity, ManyToMany, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
 

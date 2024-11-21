@@ -1,0 +1,72 @@
+export const jewelsMock = [
+  {
+    id: 1,
+    name: 'Insight Spark',
+    price: 50,
+    userId: 2,
+    createdAt: '2024-11-13 17:24:28.403798',
+    updatedAt: '2024-11-13 18:43:24.240663',
+    description: 'Um brinde por trazer uma ideia inovadora para o time.',
+    transactionType: 'reward',
+    active: true,
+  },
+  {
+    id: 2,
+    name: 'Team Catalyst',
+    price: 100,
+    createdAt: '2024-11-13 17:25:04.599306',
+    updatedAt: '2024-11-13 18:51:28.772395',
+    description:
+      'Recompensa por colaborar efetivamente com diferentes equipes.',
+    transactionType: 'reward',
+    active: true,
+  },
+  {
+    id: 3,
+    name: 'Growth Gem',
+    price: 80,
+    userId: 4,
+    createdAt: '2024-11-13 17:25:46.231013',
+    updatedAt: '2024-11-13 19:23:44.010376',
+    description:
+      'Recebida ao concluir um curso de desenvolvimento pessoal ou profissional.',
+    transactionType: 'reward',
+    active: true,
+  },
+  {
+    id: 9,
+    name: 'Inclusion Stone',
+    price: 60,
+    userId: 4,
+    createdAt: '2024-11-13 19:22:00.94107',
+    updatedAt: '2024-11-13 19:23:50.483979',
+    description:
+      'Prêmio por promover a inclusão e diversidade no ambiente de trabalho.',
+    transactionType: 'gift',
+    active: true,
+  },
+  {
+    id: 10,
+    name: 'Innovation Jewel',
+    price: 250,
+    userId: 3,
+    createdAt: '2024-11-14 08:28:22.535918',
+    updatedAt: '2024-11-14 08:30:17.310064',
+    description:
+      'Oferecida ao implementar soluções inovadoras que melhoram processos.',
+    transactionType: 'reward',
+    active: true,
+  },
+  {
+    id: 11,
+    name: 'Leadership Badge',
+    price: 120,
+    userId: 13,
+    createdAt: '2024-11-14 09:14:44.758507',
+    updatedAt: '2024-11-14 09:26:48.201165',
+    description:
+      'Um reconhecimento por liderar um projeto ou evento importante.',
+    transactionType: 'reward',
+    active: false,
+  },
+];
