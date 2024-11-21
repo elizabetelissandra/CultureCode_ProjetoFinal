@@ -9,7 +9,7 @@ import { Product, User } from '../database/entities/index';
 import { Repository } from 'typeorm';
 import { CreateProdutsDto } from './dtos/create-products.dto';
 import { UpdateProductsDto } from './dtos/update-products.dto';
-import { UserDecoratorDTO } from 'src/user/dtos/userDecorator.dto';
+import { UserDecoratorDTO } from '../user/dtos/userDecorator.dto';
 
 @Injectable()
 export class ProductsService {
@@ -120,7 +120,9 @@ export class ProductsService {
 
   async update(id: number, body: UpdateProductsDto) {
     try {
-      await this.productById(id);
+      // await this.productById(id);
+      await this.productsRepository.findOne({where: {id}, select: {category: true, name: true, price: true, inStock: true, id: true}})
+
 
       return await this.productsRepository.update(id, body);
     } catch (error) {
