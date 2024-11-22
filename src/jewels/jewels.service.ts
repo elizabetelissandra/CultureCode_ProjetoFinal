@@ -118,11 +118,13 @@ export class JewelsService {
 
   async update(id: number, body: UpdateJewelsDto) {
     try {
-      await this.jewelById(id);
+      const jewel =  await this.jewelById(id);
 
-      await this.jewelsRepository.update(id, body);
+      Object.assign(jewel, body)
 
-      return await this.jewelById(id);
+      await this.jewelsRepository.save(jewel)
+
+      return jewel
     } catch (error) {
       console.error(error);
       throw new HttpException(error.message, error.status);
