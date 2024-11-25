@@ -37,6 +37,8 @@ export class UserService {
       if (!user) {
         throw new NotFoundException(`This user with id: ${id} not found!`);
       }
+
+      return user;
     } catch (error) {
       console.error(error);
 
