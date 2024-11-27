@@ -15,7 +15,7 @@ import { CreateJewelsDto } from './dtos/create-jewels.dto';
 import { Roles } from '../auth/decorator/role.decorator';
 import { RoleEnum } from '../enum/role.enum';
 import { UpdateJewelsDto } from './dtos/update-jewels.dto';
-import { ApiBadRequestResponse, ApiBearerAuth, ApiBody, ApiCreatedResponse, ApiForbiddenResponse, ApiNotFoundResponse, ApiOkResponse, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ApiBadRequestResponse, ApiBearerAuth, ApiBody, ApiCreatedResponse, ApiForbiddenResponse, ApiNotFoundResponse, ApiOkResponse, ApiParam, ApiTags } from '@nestjs/swagger';
 import { ResponseCreateJewelsDoc } from './docs/response-create-jewels.doc';
 import { CreateJewelsDoc } from './docs/create-jewels.doc';
 import { ResponseDistribuiteJewelsDoc } from './docs/response-distribuite-jewels.doc';
