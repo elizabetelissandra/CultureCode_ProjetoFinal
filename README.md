@@ -69,6 +69,8 @@ O **CultureCode** é um projeto final que demonstra o uso de **NestJS** para cri
 - A aplicação estará disponível em http://localhost:3000.
 - A documentação interativa estará em http://localhost:3000/api.
 
+---
+
 ## 🤝 Contribuindo
 Contribuições são bem-vindas! Para contribuir:
 
@@ -91,12 +93,19 @@ Contribuições são bem-vindas! Para contribuir:
     ```
 5. Abra um Pull Request.
 
+---
+
 ## 📩 Contato
 Para dúvidas ou sugestões, entre em contato:
 
 Email: elizabetelissandradev@gmail.com
+
+---
+
 ## 📝 Licença
 Este projeto é licenciado sob a Licença MIT. Para mais detalhes, consulte o arquivo LICENSE.
+
+---
 
 ## 📖 Notas Adicionais
 Este projeto foi criado como parte do aprendizado e aperfeiçoamento em NestJS e práticas de desenvolvimento orientado a testes (TDD).
