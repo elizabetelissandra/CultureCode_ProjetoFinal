@@ -1,56 +1,103 @@
 # CultureCode - Projeto Final
 
-Este repositório contém o código-fonte de um projeto desenvolvido com o framework NestJS, uma estrutura progressiva para Node.js que permite a construção de aplicações de servidor eficientes e escaláveis.
+Bem-vindo ao repositório do **CultureCode**, um projeto desenvolvido com o framework **NestJS**, uma poderosa estrutura para construção de aplicações escaláveis, eficientes e modularizadas no **Node.js**.
 
-## Resumo
+## ✨ Resumo
 
-Este projeto inclui:
+O **CultureCode** é um projeto final que demonstra o uso de **NestJS** para criar APIs robustas e testáveis. Ele inclui:
 
-- Criação de um projeto NestJS com configuração inicial.
-- Implementação de testes e2e (end-to-end) no módulo de jóias, produtos e usuários.
-- Configuração da função bootstrap para inicializar a aplicação.
+- Configuração inicial de um projeto **NestJS**.
+- Implementação de CRUDs para gerenciamento de jóias, produtos e usuários.
+- Testes **End-to-End (E2E)** utilizando **Jest** e **Supertest**.
+- Configuração da função **bootstrap** para inicializar a aplicação com segurança e flexibilidade.
 
-## Tecnologias Utilizadas
+---
 
-- **NestJS**: um framework progressivo para Node.js.
-- **TypeScript**: linguagem de programação utilizada no projeto.
-- **Jest**: framework de testes unitários.
-- **Supertest**: biblioteca para testes de integração.
+## 🚀 Tecnologias Utilizadas
 
+- **NestJS**: Framework progressivo e modular para Node.js.
+- **TypeScript**: Linguagem principal para implementação.
+- **Jest**: Framework para testes unitários e de integração.
+- **Supertest**: Biblioteca para testes HTTP integrados.
+- **PostgreSQL**: Banco de dados utilizado para armazenamento de dados.
+- **Swagger**: Documentação interativa da API.
 
-## Como Executar o Projeto
+---
 
+## 🛠️ Funcionalidades
+
+- **Módulo de Jóias**: Gerenciamento de jóias, com funcionalidades de criação, leitura, atualização e exclusão.
+- **Módulo de Produtos**: Operações CRUD completas e implementação de filtros e paginação.
+- **Módulo de Usuários**: Gerenciamento de usuários, com validações e relacionamentos entre entidades.
+- **Distribuição de Jóias**: Permite atribuir jóias a usuários, com regras de negócio integradas.
+
+---
+
+## 📦 Como Executar o Projeto
+
+### Pré-requisitos
+- **Node.js** (v16 ou superior)
+- **NPM** ou **Yarn**
+- Banco de dados **PostgreSQL**
+
+### Passos para execução
 1. Clone o repositório:
-```
-git clone https://github.com/elizabetelissandra/CultureCode_ProjetoFinal.git
-```
+   ```bash
+   git clone https://github.com/elizabetelissandra/CultureCode_ProjetoFinal.git
+   ```
 2. Navegue até o diretório do projeto:
 
-```
-cd CultureCode_ProjetoFinal
-```
+    ```
+    cd CultureCode_ProjetoFinal
+    ```
 
 3. Instale as dependências:
-```
-npm install
-```
-
+    ```
+    npm install
+    ```
 4. Execute a aplicação:
-```
-npm run start
-```
+    ```
+    npm run start
+    ```
 
 5. Para rodar os testes:
-```
-npm run test
-```
+    ```
+    npm run test
+    ```
+6. Acesse a API:
 
-## Contribuições
-Sinta-se à vontade para contribuir com melhorias e correções!
+- A aplicação estará disponível em http://localhost:3000.
+- A documentação interativa estará em http://localhost:3000/api.
 
-## Contato
-Para mais informações, entre em contato com elizabetelissandradev@gmail.com.
+## 🤝 Contribuindo
+Contribuições são bem-vindas! Para contribuir:
 
-## Licença
+1. Faça um fork do repositório.
+2. Crie uma nova branch:
+    ```
+    git checkout -b feature/sua-feature
+    
+    ```
+3. Commit suas alterações:
+    ```
+    git commit -m 'Adicionei uma nova funcionalidade'
+    
+    ```
+4. Faça um push para a branch:
 
-Este projeto é licenciado sob a Licença MIT.
+    ```
+    git push origin feature/sua-feature
+    
+    ```
+5. Abra um Pull Request.
+
+## 📩 Contato
+Para dúvidas ou sugestões, entre em contato:
+
+Email: elizabetelissandradev@gmail.com
+## 📝 Licença
+Este projeto é licenciado sob a Licença MIT. Para mais detalhes, consulte o arquivo LICENSE.
+
+## 📖 Notas Adicionais
+Este projeto foi criado como parte do aprendizado e aperfeiçoamento em NestJS e práticas de desenvolvimento orientado a testes (TDD).
+Sugestões de melhorias são sempre bem-vindas! 😊
