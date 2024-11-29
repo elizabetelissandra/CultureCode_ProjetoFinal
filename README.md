@@ -108,5 +108,7 @@ Este projeto é licenciado sob a Licença MIT. Para mais detalhes, consulte o ar
 ---
 
 ## 📖 Notas Adicionais
+Trello com organização do projeto: https://trello.com/b/Mr2cgxXQ/projeto-final-mod4
+
 Este projeto foi criado como parte do aprendizado e aperfeiçoamento em NestJS e práticas de desenvolvimento orientado a testes (TDD).
 Sugestões de melhorias são sempre bem-vindas! 😊
