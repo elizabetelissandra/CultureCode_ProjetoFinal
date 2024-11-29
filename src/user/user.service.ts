@@ -84,7 +84,7 @@ export class UserService {
 
   async update(id: number, body: UpdateUserDto, user: UserDecoratorDTO) {
     try {
-      await this.usersRepository.findOne({where: {id}, select: {id: true}});
+      const userUpdate =  await this.userById(id)
 
       if (user.userRole !== RoleEnum.admin && user.userId !== Number(id)) {
         throw new UnauthorizedException(
@@ -92,9 +92,10 @@ export class UserService {
         );
       }
 
-      await this.usersRepository.update(id, body);
+      Object.assign(userUpdate, body);
+      this.usersRepository.save(userUpdate);
 
-      return await this.usersRepository.findOneBy({ id });
+      return await this.findById(id)
     } catch (error) {
       console.error(error);
       throw new HttpException(error.message, error.status);
@@ -107,7 +108,7 @@ export class UserService {
 
       if (user.userRole !== RoleEnum.admin && user.userId !== id) {
         throw new UnauthorizedException(
-          'You dont have permitions to update other users.',
+          'You do not have permission to delete other users.',
         );
       }
 

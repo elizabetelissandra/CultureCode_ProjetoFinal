@@ -8,9 +8,9 @@ export const userRepositoryMock  = {
     useValue: {
         find: jest.fn().mockResolvedValue([usersMock]),
         findOne: jest.fn().mockResolvedValue(usersMock[1]),
-        update: jest.fn().mockResolvedValue(usersMock[1], ),
+        update: jest.fn().mockResolvedValue({...usersMock[1], ...updateUserMock}),
         softDelete: jest.fn(),
         findOneBy: jest.fn().mockResolvedValue({...usersMock[1], ...updateUserMock}),
-        save: jest.fn().mockResolvedValue({})
+        save: jest.fn()
     }
 }

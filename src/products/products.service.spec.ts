@@ -58,7 +58,7 @@ describe('ProductsService', () => {
 
   describe('Update', () => {
     it('should be update product', async () => {
-      // jest.spyOn(productService, 'update').mockResolvedValue(productsMock)
+     
       const product = await productService.update(7, updateProductMock)
       console.log(product)
       expect(product['price']).toEqual(updateProductMock.price)

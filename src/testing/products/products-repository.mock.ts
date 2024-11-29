@@ -13,6 +13,6 @@ export const productsRepositoryMock = {
     update: jest
       .fn()
       .mockResolvedValue({...productsMock[3], ...updateProductMock}),
-    delete: jest.fn().mockResolvedValue(productsMock[2]),
+    softDelete: jest.fn().mockResolvedValue(productsMock[2]),
   },
 };

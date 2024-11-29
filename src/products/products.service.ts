@@ -55,6 +55,7 @@ export class ProductsService {
           `This product with id: ${id} not found or no stock`,
         );
       }
+      
 
       const user = await this.usersRepository.findOne({
         where: { id: userDeco.userId },
@@ -87,7 +88,7 @@ export class ProductsService {
         buyer: userBuyer.map((u) => ({ id: u.id })),
       });
 
-      return { message: 'Product purchased successfully', user };
+      return { message: 'Product purchased successfully', product};
     } catch (error) {
       console.error(error);
       throw new HttpException(error.message, error.status);
@@ -120,11 +121,13 @@ export class ProductsService {
 
   async update(id: number, body: UpdateProductsDto) {
     try {
-      // await this.productById(id);
-      await this.productsRepository.findOne({where: {id}, select: {category: true, name: true, price: true, inStock: true, id: true}})
+      const product = await this.productById(id);      
 
+      Object.assign(product, body)
+      this.productsRepository.save(product);
 
-      return await this.productsRepository.update(id, body);
+      return product;
+
     } catch (error) {
       console.error(error);
       throw new HttpException(error.message, error.status);
@@ -135,7 +138,7 @@ export class ProductsService {
     try {
       await this.productById(id);
 
-      await this.productsRepository.delete(id);
+      await this.productsRepository.softDelete(id);
 
       return { message: 'Product deleted' };
     } catch (error) {

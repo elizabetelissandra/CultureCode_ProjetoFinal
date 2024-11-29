@@ -6,7 +6,6 @@ import { AuthGuard } from '../auth/guards/auth.guard';
 import { authGuardMock } from '../testing/auth/auth-guard.mock';
 import { createProductMock } from '../testing/products/create-product.mock';
 import { userDecoratorMock } from '../testing/users/user-decorator.mock';
-import { productsMock } from '../testing/products/products-mock';
 import { updateProductMock } from '../testing/products/update-product.mock';
 
 describe('ProductsController', () => {
@@ -32,6 +31,8 @@ describe('ProductsController', () => {
     it('should be create a product', async () => {
       const newProduct = await productController.create(createProductMock);
 
+      console.log('Create', newProduct)
+
       expect(newProduct).toHaveProperty('id');
       expect(newProduct.deleteAt).toBeNull();
     });
@@ -42,6 +43,8 @@ describe('ProductsController', () => {
         userDecoratorMock,
       );
 
+      console.log('Reward', rewardProduct)
+
       expect(rewardProduct).toHaveProperty('message');
     });
   });
@@ -49,6 +52,8 @@ describe('ProductsController', () => {
   describe('Read', () => {
     it('should be find product by id', async () => {
       const product = await productController.productById(4);
+
+      console.log('Product By Id', product)
 
       expect(product.name).toEqual('Standing Desk Converter');
       expect(product.deleteAt).toBeNull();
@@ -58,12 +63,16 @@ describe('ProductsController', () => {
     it('should be update product', async () => {
       const product = await productController.update(3, updateProductMock)
 
+      console.log('Update', product)
+
       expect(product['price']).toEqual(updateProductMock.price)
     })
   })
   describe('Delete', () => {
     it('should be delete product', async () => {
       const product = await productController.delete(8)
+
+      console.log('Delete', product)
 
       expect(product.message).toEqual('Product deleted')
     })

@@ -5,7 +5,6 @@ import { userRepositoryMock } from '../testing/users/user-repository.mock';
 import { createJewelsMock } from '../testing/jewels/create-jewels.mock';
 import { jewelsMock } from '../testing/jewels/jewels.mock';
 import { updateJewelsMock } from '../testing/jewels/update-jewels.mock';
-import { TransactionEnum } from '../enum/transaction.enum';
 
 describe('JewelsService', () => {
   let jewelsService: JewelsService;

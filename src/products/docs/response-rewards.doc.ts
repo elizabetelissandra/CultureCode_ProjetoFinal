@@ -14,22 +14,27 @@ export class ResponseRewardDoc {
     description: 'buyer and purchase information',
     type: User,
     example: {
-        id: 4,
-        firstName: 'Diego Osvaldo',
-        role: 'admin',
-        coins: '187',
-        productsPurchased: {
-        id: 7,
-        name: 'Productivity Planner',
-        price: 24,
-        category: 'Workplace_Benefits',
-        inStock: true,
-        createdAt: '2024-11-13T22:25:43.639Z',
-        updatedAt: '2024-11-14T11:48:08.634Z',
-        deleteAt: null,
-      },
-    },
-    name: 'User'
+        id: 9,
+		name: "Tablet with pen",
+		price: 100,
+		category: "Technology",
+		inStock: true,
+		buyer: [
+			{
+				id: 13,
+				firstName: "Rebeca Lívia",
+				lastName: "Raquel Ferreira",
+				email: "rebeca_ferreira@grupoitamaraty.com.br",
+				role: "admin",
+				emailVerified: true,
+				coins: 4900,
+				createdAt: "2024-11-13T13:04:08.258Z",
+				updatedAt: "2024-11-29T18:14:52.221Z",
+				deleteAt: null,
+      	}
+		]
+	},
+    name: 'Product'
   })
   user: User;
 }

@@ -8,7 +8,7 @@ import { RoleEnum } from '../enum/role.enum';
 import { UpdateProductsDto } from './dtos/update-products.dto';
 import { UserDecorator } from '../auth/decorator/user.decorator';
 import { UserDecoratorDTO } from '../user/dtos/userDecorator.dto';
-import { ApiBadRequestResponse, ApiBearerAuth, ApiBody, ApiCreatedResponse, ApiForbiddenResponse, ApiNotFoundResponse, ApiOkResponse, ApiParam, ApiResponse } from '@nestjs/swagger';
+import { ApiBadRequestResponse, ApiBearerAuth, ApiBody, ApiCreatedResponse, ApiForbiddenResponse, ApiNotFoundResponse, ApiOkResponse, ApiParam } from '@nestjs/swagger';
 import { CreateProductDoc } from './docs/create-products.doc';
 import { ResponseCreateProductDoc } from './docs/response-create-products.doc';
 import { ResponseRewardDoc } from './docs/response-rewards.doc';
@@ -30,10 +30,10 @@ export class ProductsController {
     return await this.productsService.create(body)
   }
 
-  @ApiParam({type: Number, example: 7, name: 'id'})
+  @ApiParam({type: Number, example: 9, name: 'id'})
   @ApiCreatedResponse({type: ResponseRewardDoc})
   @ApiForbiddenResponse({example: {message: "token not found"}})
-  @ApiNotFoundResponse({example: `This product with id: 7 not found or no stock`})
+  @ApiNotFoundResponse({example: `This product with id: 9 not found or no stock`})
   @ApiBadRequestResponse({example: 'Insufficient jewels'})
   @Post('reward/:id')
   async reward(@Param('id' , ParseIntPipe) id: number, @UserDecorator() userDeco: UserDecoratorDTO){

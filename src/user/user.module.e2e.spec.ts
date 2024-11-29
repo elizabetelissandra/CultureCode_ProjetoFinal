@@ -61,8 +61,7 @@ describe('Users Module 2e2', () => {
     it('should be find user by id', async () => {
       const response = await request(app.getHttpServer()).get(`/user/${usersMock[1].id}`)
 
-      console.log('Error:', response.error);
-      console.log('StatusCode:', response.statusCode);
+    
 
       expect(response.statusCode).toEqual(200)
       expect(response.body).toHaveProperty('email')
@@ -70,7 +69,10 @@ describe('Users Module 2e2', () => {
   });
   describe('Update', () => {
     it('should be update an user', async() => {
-      const response = await request(app.getHttpServer()).patch(`/user/${usersMock[3].id}`).send(updateUserMock)
+      const response = await request(app.getHttpServer()).patch(`/user/${usersMock[4].id}`).send(updateUserMock)
+
+      console.log('Error:', response.error);
+      console.log('StatusCode:', response.statusCode);
 
       expect(response.statusCode).toEqual(200)
       expect(response.body).toHaveProperty('email', updateUserMock.email)
