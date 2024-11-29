@@ -2,6 +2,8 @@
 
 Bem-vindo ao repositório do **CultureCode**, um projeto desenvolvido com o framework **NestJS**, uma poderosa estrutura para construção de aplicações escaláveis, eficientes e modularizadas no **Node.js**.
 
+
+
 ## ✨ Resumo
 
 O **CultureCode** é um projeto final que demonstra o uso de **NestJS** para criar APIs robustas e testáveis. Ele inclui:
@@ -10,6 +12,15 @@ O **CultureCode** é um projeto final que demonstra o uso de **NestJS** para cri
 - Implementação de CRUDs para gerenciamento de jóias, produtos e usuários.
 - Testes **End-to-End (E2E)** utilizando **Jest** e **Supertest**.
 - Configuração da função **bootstrap** para inicializar a aplicação com segurança e flexibilidade.
+
+
+## 🔗  Links
+
+Alguns links contendo arquivos importantes sobre o projeto.
+
+- [Trello](https://trello.com/b/Mr2cgxXQ/projeto-final-mod4)
+
+- [Documentação](https://culturecodeprojetofinal-production.up.railway.app/api/#/)
 
 ---
 
@@ -108,7 +119,7 @@ Este projeto é licenciado sob a Licença MIT. Para mais detalhes, consulte o ar
 ---
 
 ## 📖 Notas Adicionais
-Trello com organização do projeto: https://trello.com/b/Mr2cgxXQ/projeto-final-mod4
+
 
 Este projeto foi criado como parte do aprendizado e aperfeiçoamento em NestJS e práticas de desenvolvimento orientado a testes (TDD).
 Sugestões de melhorias são sempre bem-vindas! 😊
