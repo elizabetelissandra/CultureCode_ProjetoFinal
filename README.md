@@ -66,8 +66,8 @@ O **CultureCode** é um projeto final que demonstra o uso de **NestJS** para cri
     ```
 6. Acesse a API:
 
-- A aplicação estará disponível em http://localhost:3000.
-- A documentação interativa estará em http://localhost:3000/api.
+- A aplicação estará disponível em http://localhost:3001.
+- A documentação interativa estará em http://localhost:3001/api.
 
 ---
 
