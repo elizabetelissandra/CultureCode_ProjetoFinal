@@ -24,6 +24,12 @@ Alguns links contendo arquivos importantes sobre o projeto.
 
 ---
 
+## 🗂️ Entidades
+
+![Diagrama de relacionamento de entidades](https://i.imgur.com/VLJY5bs.png)
+
+---
+
 ## 🚀 Tecnologias Utilizadas
 
 - **NestJS**: Framework progressivo e modular para Node.js.
