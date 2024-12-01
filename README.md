@@ -24,7 +24,7 @@ Alguns links contendo arquivos importantes sobre o projeto.
 
 ---
 
-## 🗂️ Entidades
+## 🗂️ Diagrama de Entidade e Relacionamento
 
 ![Diagrama de relacionamento de entidades](https://i.imgur.com/VLJY5bs.png)
 
