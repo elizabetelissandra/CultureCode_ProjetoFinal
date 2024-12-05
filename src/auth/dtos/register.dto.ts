@@ -3,20 +3,20 @@ import { RoleEnum } from "../../enum/role.enum"
 
 export class RegisterDto{
 
-    @IsString()
-    @IsNotEmpty()
+    @IsString({message: 'First Name is not valid'})
+    @IsNotEmpty({message: 'First Name is required'})
     firstName: string
 
     @IsString()
     @IsOptional()
     lastName: string
 
-    @IsEmail()
-    @IsNotEmpty()
+    @IsEmail({}, {message: 'Email is not valid'})
+    @IsNotEmpty({message: 'Email is required'})
     email: string
 
     @IsString()
-    @IsNotEmpty()
+    @IsNotEmpty({message: 'Password is required'})
     password: string
 
     @IsString()
