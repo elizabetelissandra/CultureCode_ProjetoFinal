@@ -12,7 +12,6 @@ import { RegisterDto } from './dtos/register.dto';
 import { UserService } from '../user/user.service';
 import { LoginDto } from './dtos/login.dto';
 import * as bcrypt from 'bcrypt';
-import { skip } from 'node:test';
 
 @Injectable()
 export class AuthService {
@@ -45,12 +44,13 @@ export class AuthService {
 
   async login(body: LoginDto) {
     try {
-      console.log('LOGIN');
       const user = await this.findOne(body.email);
-      console.log(user);
+      console.log('usuário', user)
+      
       if (!user || !(await bcrypt.compare(body.password, user.password))) {
         throw new UnauthorizedException('invalid credentials');
       }
+      console.log(await bcrypt.compare(body.password, user.password));
 
       const tokenPayload = {
         userId: user.id,

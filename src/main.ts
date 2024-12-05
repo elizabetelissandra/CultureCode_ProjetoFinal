@@ -12,6 +12,15 @@ async function bootstrap() {
 
   SwaggerModule.setup('api', app, documentFactory);
   
+  app.useGlobalPipes(new ValidationPipe({
+    whitelist: true,
+    forbidNonWhitelisted: true,
+    transform: true,
+  }));
+  app.enableCors({
+    origin: 'https://culturecodeprojetofinal-production.up.railway.app',
+    credentials: true,
+  });
 
   await app.listen(process.env.PORT ?? 3000);
 }
