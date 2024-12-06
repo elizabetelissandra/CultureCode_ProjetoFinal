@@ -44,9 +44,8 @@ export class AuthService {
 
   async login(body: LoginDto) {
     try {
-      const user = await this.usersRepository.findOne({
-        where: { email: body.email },
-      });
+      const user = await this.userService.findByEmail(
+      body.email);
 
       const isPasswordValid = await bcrypt.compare(
         body.password,
