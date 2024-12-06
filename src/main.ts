@@ -17,10 +17,10 @@ async function bootstrap() {
     forbidNonWhitelisted: true,
     transform: true,
   }));
-  app.enableCors({
-    origin: 'https://culturecodeprojetofinal-production.up.railway.app',
-    credentials: true,
-  });
+  // app.enableCors({
+  //   origin: 'https://culturecodeprojetofinal-production.up.railway.app',
+  //   credentials: true,
+  // });
 
   await app.listen(process.env.PORT ?? 3000);
 }

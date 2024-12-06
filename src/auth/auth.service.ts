@@ -44,13 +44,21 @@ export class AuthService {
 
   async login(body: LoginDto) {
     try {
-      const user = await this.findOne(body.email);
-      console.log('usuário', user)
-      
-      if (!user || !(await bcrypt.compare(body.password, user.password))) {
+      const user = await this.usersRepository.findOne({
+        where: { email: body.email },
+      });
+
+      const isPasswordValid = await bcrypt.compare(
+        body.password,
+        user.password,
+      );
+
+      console.log('Usuário encontrado:', user);
+      console.log('Validação de senha:', isPasswordValid);
+
+      if (!user || !isPasswordValid) {
         throw new UnauthorizedException('invalid credentials');
       }
-      console.log(await bcrypt.compare(body.password, user.password));
 
       const tokenPayload = {
         userId: user.id,
@@ -86,9 +94,8 @@ export class AuthService {
     name?: string,
   ) {
     try {
-
-      if(!page || !limit){
-        throw new BadRequestException('required page and limit')
+      if (!page || !limit) {
+        throw new BadRequestException('required page and limit');
       }
       const pageOptions = { skip: (page - 1) * limit, take: limit };
 
