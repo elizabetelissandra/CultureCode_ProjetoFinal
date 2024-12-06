@@ -95,7 +95,7 @@ export class UserService {
       Object.assign(userUpdate, body);
       this.usersRepository.save(userUpdate);
 
-      return await this.findById(id)
+      return userUpdate;
     } catch (error) {
       console.error(error);
       throw new HttpException(error.message, error.status);

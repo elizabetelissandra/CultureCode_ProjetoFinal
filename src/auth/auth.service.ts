@@ -44,8 +44,12 @@ export class AuthService {
 
   async login(body: LoginDto) {
     try {
-      const user = await this.userService.findByEmail(
+      const user = await this.findOne(
       body.email);
+
+        console.log('user:', user )
+        console.log('user password:', user.password)
+        console.log('body password:', body.password)
 
       const isPasswordValid = await bcrypt.compare(
         body.password,
