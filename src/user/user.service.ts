@@ -61,7 +61,7 @@ export class UserService {
 
       return await this.usersRepository.findOne({
         where: { id },
-        select: { id: true, firstName: true, lastName: true, coins: true },
+        select: { id: true, firstName: true, lastName: true,email: true, role: true, coins: true  },
         relations: { jewels: true, productsPurchased: true },
       });
     } catch (error) {
@@ -95,7 +95,7 @@ export class UserService {
       Object.assign(userUpdate, body);
       this.usersRepository.save(userUpdate);
 
-      return userUpdate;
+      return await this.findById(id);
     } catch (error) {
       console.error(error);
       throw new HttpException(error.message, error.status);
